@@ -4,6 +4,7 @@ import SubPageLayout from "@/components/feature/SubPageLayout";
 import { businessCategories } from "@/mocks/business";
 import { fetchPublicPrograms } from "@/features/programs/api";
 import type { ProgramRow } from "@/features/programs/types";
+import { mockProgramRows } from "@/mocks/programs";
 import { matchSearch } from "@/lib/search";
 
 const businessTabs = [
@@ -24,8 +25,8 @@ export default function BusinessPage() {
 
   useEffect(() => {
     fetchPublicPrograms()
-      .then(setPrograms)
-      .catch(() => setPrograms([]))
+      .then((rows) => setPrograms(rows.length ? rows : mockProgramRows))
+      .catch(() => setPrograms(mockProgramRows))
       .finally(() => setLoading(false));
   }, []);
 

@@ -54,7 +54,10 @@ export default function HeroSlider() {
   }, [next, slides.length]);
 
   return (
-    <section className="relative w-full h-[600px] md:h-[760px] lg:h-[900px] xl:h-[980px] overflow-hidden bg-gradient-to-r from-primary-950 via-primary-900 to-primary-800 mt-[-80px] md:mt-[-96px]">
+    <section
+      className="relative w-full overflow-hidden bg-gradient-to-r from-primary-950 via-primary-900 to-primary-800 mt-[-80px] md:mt-[-96px]"
+      style={{ aspectRatio: "2586 / 1298" }}
+    >
       {slides.map((slide, index) => {
         const isPoster = !!slide.poster;
         const hasLink = !!slide.link && slide.link !== "#";
@@ -66,7 +69,7 @@ export default function HeroSlider() {
             <img
               src={slide.image}
               alt={slide.title}
-              className={`absolute inset-0 w-full h-full object-cover ${isPoster ? "object-[50%_60%]" : "object-center"}`}
+              className="absolute inset-0 w-full h-full object-cover object-center"
             />
             {!isPoster && (
               <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40" />

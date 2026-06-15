@@ -2,6 +2,11 @@ import { useEffect, useState } from "react";
 import { fetchPublicEvents } from "./api";
 import { toDisplayItem } from "./format";
 import type { EventDisplayItem, EventType } from "./types";
+import { mockEventRowsByType } from "@/mocks/events";
+
+function mockItems(type: EventType): EventDisplayItem[] {
+  return mockEventRowsByType(type).map(toDisplayItem);
+}
 
 /** 공개 페이지에서 특정 타입의 게시된 이벤트를 표시용 형태로 로드 */
 export function usePublicEvents(type: EventType) {
@@ -16,11 +21,13 @@ export function usePublicEvents(type: EventType) {
     fetchPublicEvents(type)
       .then((rows) => {
         if (!active) return;
-        setItems(rows.map(toDisplayItem));
+        // DB가 비어있으면(미설정/미시드) 목업 폴백
+        setItems(rows.length ? rows.map(toDisplayItem) : mockItems(type));
       })
-      .catch((e) => {
+      .catch(() => {
+        // DB 연결 불가(예: .env 미설정) 시 목업 폴백
         if (!active) return;
-        setError(e instanceof Error ? e.message : "불러오기에 실패했습니다.");
+        setItems(mockItems(type));
       })
       .finally(() => {
         if (active) setLoading(false);

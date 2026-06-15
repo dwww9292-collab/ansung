@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchPublicPrograms } from "@/features/programs/api";
 import type { ProgramRow } from "@/features/programs/types";
+import { mockProgramRows } from "@/mocks/programs";
 
 const FALLBACK_IMAGE = "https://placehold.co/600x800/e5e7eb/9ca3af?text=No+Image";
 
@@ -25,8 +26,10 @@ export default function BusinessSection() {
   useEffect(() => {
     let active = true;
     fetchPublicPrograms()
-      .then((rows) => active && setItems(rows))
-      .catch(() => active && setItems([]))
+      // DB가 비어있으면(미설정/미시드) 목업 폴백
+      .then((rows) => active && setItems(rows.length ? rows : mockProgramRows))
+      // DB 연결 불가(예: .env 미설정) 시 목업 폴백
+      .catch(() => active && setItems(mockProgramRows))
       .finally(() => active && setLoading(false));
     return () => {
       active = false;
