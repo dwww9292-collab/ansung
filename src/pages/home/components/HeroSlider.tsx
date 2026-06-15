@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
 import { heroSlides } from "@/mocks/home";
-import { realHeroSlides } from "@/mocks/real-assets";
 import { fetchActiveSlides } from "@/features/hero/api";
 
 interface Slide {
@@ -11,10 +10,8 @@ interface Slide {
   poster?: boolean;
 }
 
-// 관리자 슬라이드가 없을 때 보여줄 기본값: 포스터형(캐릭터) 슬라이드를 맨 앞으로, 그 뒤 실자산 + 나머지 임시 슬라이드
-const posterSlides: Slide[] = heroSlides.filter((s) => s.poster);
-const nonPosterSlides: Slide[] = heroSlides.filter((s) => !s.poster);
-const fallbackSlides: Slide[] = [...posterSlides, ...realHeroSlides, ...nonPosterSlides];
+// 관리자 슬라이드가 없을 때 보여줄 기본값: 지정된 우선순위대로 노출
+const fallbackSlides: Slide[] = heroSlides;
 
 export default function HeroSlider() {
   const [slides, setSlides] = useState<Slide[]>(fallbackSlides);

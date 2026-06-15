@@ -1,22 +1,48 @@
+// 메인 히어로 슬라이드 — 모두 텍스트가 박힌 포스터형(오버레이/제목 미표시)
+// 우선순위: 남사당 → 3·1운동 → 안성문화장, 이후 천문과학관 → 유기공방 → 칠장사
+// 이미지 파일은 public/images/hero/ 에 아래 파일명으로 저장하면 표시됩니다.
 export const heroSlides = [
   {
     id: 1,
-    title: "2026 문화살롱",
+    title: "안성 남사당 바우덕이축제",
     link: "#",
-    poster: true, // 텍스트가 박혀 있는 포스터형(오버레이/제목 미표시)
-    image: "https://storage.readdy-site.link/project_files/c131d95e-3fd2-49fb-ba6a-132840b712bc/39509466-6397-4789-a1fd-afe440d52fd6_-.png?v=aecbe212593228f17dabbe100abc0eed",
+    poster: true,
+    image: "/images/hero/hero-01-namsadang.jpg",
   },
   {
     id: 2,
-    title: "2026 실내악 시리즈",
+    title: "안성 3·1운동기념관",
     link: "#",
-    image: "https://readdy.ai/api/search-image?query=A%20classical%20music%20concert%20with%20string%20quartet%20performing%20on%20stage%2C%20warm%20golden%20lighting%2C%20elegant%20atmosphere%2C%20musicians%20in%20formal%20attire%2C%20large%20concert%20hall%20with%20rich%20wooden%20interior%2C%20cultural%20arts%20foundation%20performance%20with%20deep%20contrast%20lighting%20on%20dark%20stage%20background&width=1600&height=900&seq=hero-slide-2&orientation=landscape",
+    poster: true,
+    image: "/images/hero/hero-02-31movement.jpg",
   },
   {
     id: 3,
-    title: "생활밀착형 문화예술교육 <가가호호>",
+    title: "안성문화장 페스타",
     link: "#",
-    image: "https://readdy.ai/api/search-image?query=Community%20arts%20education%20workshop%20with%20families%20and%20children%20participating%20in%20creative%20activities%2C%20bright%20and%20warm%20atmosphere%2C%20cultural%20center%20setting%2C%20people%20painting%20and%20doing%20crafts%20together%2C%20natural%20light%20streaming%20through%20large%20windows%2C%20joyful%20expressions%2C%20Korean%20cultural%20arts%20foundation%20program%20photography%20style&width=1600&height=900&seq=hero-slide-3&orientation=landscape",
+    poster: true,
+    image: "/images/hero/hero-03-munhwajang.jpg",
+  },
+  {
+    id: 4,
+    title: "안성맞춤랜드 천문과학관",
+    link: "#",
+    poster: true,
+    image: "/images/hero/hero-04-astronomy.jpg",
+  },
+  {
+    id: 5,
+    title: "안성맞춤 유기 — 대대손손 장인정신",
+    link: "#",
+    poster: true,
+    image: "/images/hero/hero-05-yugi.jpg",
+  },
+  {
+    id: 6,
+    title: "칠장사 사천왕상",
+    link: "#",
+    poster: true,
+    image: "/images/hero/hero-06-chiljangsa.jpg",
   },
 ];
 
